@@ -38,7 +38,7 @@ export function Footer() {
               </p>
             </div>
 
-            <Button className="bg-[#3555FF] text-white text-xs">
+            <Button className="bg-[#3555FF] hover:bg-[#3555FF]/80 text-white text-xs">
               GET ANSWERS
             </Button>
 
@@ -106,7 +106,7 @@ export function Footer() {
                 </p>
               </div>
 
-              <Button className="bg-[#3555FF] text-white text-xs">
+              <Button className="bg-[#3555FF] hover:bg-[#3555FF]/80 text-white text-xs">
                 GET ANSWERS
               </Button>
             </div>
@@ -129,9 +129,9 @@ export function Footer() {
           <div className="hidden lg:grid grid-cols-2 gap-x-2 gap-y-4 h-fit">
             <div className="col-span-2 flex justify-center items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
               <Image src={AppleIcon} alt="Apple" width={40} height={40} />
-              <div className="flex flex-col">
-                <h3 className="font-medium text-[15px]">Bluechip App</h3>
-                <p className="text-xs text-white/70">for IOS</p>
+              <div className="flex flex-col text-[15px]">
+                <h3 className="font-medium ">Bluechip App</h3>
+                <p>for MacOS</p>
               </div>
             </div>
             <div className="flex flex-col items-center bg-[#1A3157] rounded-[10px] px-2 py-2">

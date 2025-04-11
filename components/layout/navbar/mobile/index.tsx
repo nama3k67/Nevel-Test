@@ -23,10 +23,10 @@ export function MobileNavbar() {
       <DialogTrigger asChild>
         <Button
           asChild
-          className="sm:hidden bg-transparent"
+          className="bg-transparent hover:bg-white/10"
           size="icon"
         >
-          <Text className="w-7 h-7 sm:hidden" color="white" />
+          <Text className="w-7 h-7" color="white" />
         </Button>
       </DialogTrigger>
 

@@ -16,7 +16,7 @@ export function GamesProvider() {
   return (
     <div className="w-full flex flex-col gap-3 lg:gap-8">
       <div className="flex justify-between items-center">
-        <h2 className="text-sm lg:text-2xl xl:text-3xl font-medium">Exclusive Games</h2>
+        <h2 className="text-sm lg:text-2xl xl:text-3xl font-medium uppercase">Exclusive Games</h2>
         <Button variant="ghost">
           <span className="hidden md:block text-base">SEE ALL</span>
           <Grip className="lg:!w-5 lg:!h-5" />
