@@ -1,17 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { HeroSection } from "@/components/sections/hero-section"
-import { FeaturedGames } from "@/components/sections/featured-games"
-import { NewsSection } from "@/components/sections/news-section"
-import { CommunitySection } from "@/components/sections/community-section"
+import { BannerCarousel3D } from "@/components/sections/banner-carousel-3d"
+import { FeaturesSection } from "@/components/sections/features"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <HeroSection />
-      <FeaturedGames />
-      <NewsSection />
-      <CommunitySection />
+    <main className="flex min-h-screen flex-col py-6">
+      <BannerCarousel3D />
+      <FeaturesSection />
     </main>
   )
 }
