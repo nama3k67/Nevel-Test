@@ -1,87 +1,157 @@
+import Image from "next/image";
 import Link from "next/link";
-import { NAVBAR_ITEMS } from "./navbar/constant";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { FOOTER_ACCORDIONS, FOOTER_SOCIALS } from "./constants";
+
+import AndroidIcon from "@/shared/images/icons/android.png";
+import AppleIcon from "@/shared/images/icons/apple.png";
 
 export function Footer() {
+  const renderSocials = () => {
+    return FOOTER_SOCIALS.map((social) => (
+      <Link
+        key={social.id}
+        href={social.url}
+        className="text-white/70 hover:text-white"
+      >
+        <Image src={social.icon} alt={social.name} width={32} height={32} />
+      </Link>
+    ));
+  };
+
   return (
-    <footer className="bg-background border-t">
+    <footer className="bg-[#12294A] text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
-            <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-primary">GameVerse</span>
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Your ultimate destination for gaming tournaments, news, and community.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 xl:gap-24">
+          <div className="hidden lg:flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <h3 className="font-medium text-2xl">Help Center</h3>
+              <p className="text-white/70 text-xs">
+                If you have any questions?
+              </p>
+            </div>
+
+            <Button className="bg-[#3555FF] text-white text-xs">
+              GET ANSWERS
+            </Button>
+
+            <div className="flex justify-between mt-4">{renderSocials()}</div>
           </div>
-          
-          <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              {NAVBAR_ITEMS.map((item) => (
-                <li key={item.name}>
-                  <Link 
-                    href={item.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
+
+          <div className="flex flex-col gap-12 lg:hidden">
+            <Accordion type="single" collapsible className="w-full">
+              {FOOTER_ACCORDIONS.map((accordion) => (
+                <AccordionItem
+                  key={accordion.id}
+                  value={accordion.title}
+                  className="border-none bg-[#1A3157] mb-4 rounded-xl px-4"
+                >
+                  <AccordionTrigger className="font-medium">
+                    {accordion.title}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="space-y-3.5">
+                      {accordion.content.map((item, index) => (
+                        <li key={index}>
+                          <Link
+                            href="#"
+                            className="text-white/70 hover:text-white"
+                          >
+                            {item}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </ul>
+            </Accordion>
           </div>
-          
-          <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
+
+          <div className="col-span-3 hidden lg:grid grid-cols-3 gap-1">
+            {FOOTER_ACCORDIONS.map((accordion) => (
+              <div key={accordion.id} className="space-y-4">
+                <h3 className="text-lg font-medium">{accordion.title}</h3>
+                <ul className="space-y-2 lg:space-y-4">
+                  {accordion.content.map((item, index) => (
+                    <li key={index}>
+                      <Link href="#" className="text-white/70 hover:text-white">
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          
-          <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Discord
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Twitter
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Instagram
-                </Link>
-              </li>
-            </ul>
+
+          <div className="flex lg:hidden flex-col items-center gap-4">
+            <h3 className="font-medium">Follow Us</h3>
+            <div className="flex gap-10">{renderSocials()}</div>
           </div>
-        </div>
-        
-        <div className="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} GameVerse. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0">
-            <p className="text-sm text-muted-foreground">
-              Designed with passion for gamers worldwide
-            </p>
+
+          <div className="grid lg:hidden grid-cols-2 gap-x-2 gap-y-4 mt-10">
+            <div className="flex justify-between items-center col-span-2 px-4 py-4 bg-[#1A3157] rounded-[10px]">
+              <div className="flex flex-col">
+                <h3 className="font-medium">Help Center</h3>
+                <p className="text-white/70 text-xs">
+                  If you have any questions?
+                </p>
+              </div>
+
+              <Button className="bg-[#3555FF] text-white text-xs">
+                GET ANSWERS
+              </Button>
+            </div>
+            <div className="flex justify-center items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
+              <Image src={AndroidIcon} alt="Android" width={40} height={40} />
+              <div className="flex flex-col">
+                <h3 className="font-medium text-[15px]">Bluechip App</h3>
+                <p className="text-xs text-white/70">for Android</p>
+              </div>
+            </div>
+            <div className="flex justify-center items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
+              <Image src={AppleIcon} alt="Apple" width={40} height={40} />
+              <div className="flex flex-col">
+                <h3 className="font-medium text-[15px]">Bluechip App</h3>
+                <p className="text-xs text-white/70">for IOS</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden lg:grid grid-cols-2 gap-x-2 gap-y-4 h-fit">
+            <div className="col-span-2 flex justify-center items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
+              <Image src={AppleIcon} alt="Apple" width={40} height={40} />
+              <div className="flex flex-col">
+                <h3 className="font-medium text-[15px]">Bluechip App</h3>
+                <p className="text-xs text-white/70">for IOS</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
+              <Image src={AndroidIcon} alt="Android" width={40} height={40} />
+              <div className="flex flex-col">
+                <h3 className="font-medium text-[15px] sr-only">
+                  Bluechip App
+                </h3>
+                <p className="text-xs text-white/70">Android</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center bg-[#1A3157] rounded-[10px] px-2 py-2">
+              <Image src={AppleIcon} alt="Apple" width={40} height={40} />
+              <div className="flex flex-col">
+                <h3 className="font-medium text-[15px] sr-only">
+                  Bluechip App
+                </h3>
+                <p className="text-xs text-white/70">IOS</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

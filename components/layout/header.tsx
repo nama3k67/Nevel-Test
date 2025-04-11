@@ -9,9 +9,9 @@ import { MobileNavbar } from "./navbar/mobile";
 
 export function Header() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[#07033A]">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#07033A] h-20">
       <nav
-        className="container mx-auto flex items-center justify-between p-6 lg:px-8"
+        className="container mx-auto flex items-center justify-between h-full px-4 lg:px-8"
         aria-label="Global"
       >
         <div className="flex items-center gap-2 lg:gap-12">
@@ -34,8 +34,10 @@ export function Header() {
           <DesktopNavbar className="hidden lg:flex lg:gap-x-6" />
         </div>
         <div className="flex items-center gap-x-1 sm:gap-x-4">
-          <Button className="bg-[#12294A] text-white uppercase">Login</Button>
-          <Button className="bg-[#01AF70] text-white uppercase">
+          <Button className="bg-[#12294A] hover:bg-[#12294A]/80 text-white uppercase">
+            Login
+          </Button>
+          <Button className="bg-[#01AF70] hover:bg-[#01AF70]/80 text-white uppercase">
             Registration
           </Button>
         </div>
